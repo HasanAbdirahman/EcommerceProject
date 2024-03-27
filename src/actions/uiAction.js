@@ -3,3 +3,10 @@ export const uiAction = () => {
     type: "TOGGLE",
   };
 };
+
+export const showNotificationAction = ({ status, message, title }) => {
+  return {
+    type: "SHOW_NOTIFICATION",
+    payload: { status, message, title },
+  };
+};
