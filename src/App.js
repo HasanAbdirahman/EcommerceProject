@@ -37,6 +37,8 @@ function App() {
       if (!response.ok) {
         throw new Error("Sending cart data failed");
       }
+      let responseData = await response.json();
+      console.log("hasan" + responseData);
       dispatch(
         showNotificationAction({
           status: "Success",
@@ -44,7 +46,6 @@ function App() {
           message: "Sent cart data successfully!",
         })
       );
-      // let responseData = await JSON.parse(response);
     };
     sendCartData().catch((error) => {
       dispatch(
