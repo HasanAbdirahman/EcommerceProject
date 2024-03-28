@@ -1,18 +1,15 @@
 import classes from "./CartItem.module.css";
 import { useDispatch } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../actions/cartAction";
-import { useEffect } from "react";
 const CartItem = (props) => {
   const { title, quantity, total, price, id } = props.item;
   const dispatch = useDispatch();
-
   function addItemToCartHandler() {
     dispatch(addItemToCart({ title, id, price, quantity, total }));
   }
   function removeItemFromCartHandler() {
     dispatch(removeItemFromCart(id));
   }
-  useEffect(() => {}, []);
   return (
     <li className={classes.item}>
       <header>

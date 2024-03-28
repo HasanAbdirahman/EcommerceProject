@@ -2,14 +2,21 @@ import Cart from "./components/Cart/Cart";
 import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { showNotificationAction } from "./actions/uiAction";
 import Notification from "../src/components/UI/Notification";
 
+let isInital = true;
 function App() {
   const show = useSelector((state) => state.toggle.show);
-  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.productAdded);
   const notification = useSelector(
     (state) => state.showNotification.notification
   );
+<<<<<<< HEAD
+=======
+  const dispatch = useDispatch();
+>>>>>>> parent of 69bb7a4 (discarding fetch)
   useEffect(() => {
     if (isInital) {
       isInital = false;
@@ -33,6 +40,11 @@ function App() {
       if (!response.ok) {
         throw new Error("Sending cart data failed");
       }
+<<<<<<< HEAD
+=======
+      let responseData = await response.json();
+      console.log("hasan" + responseData);
+>>>>>>> parent of 69bb7a4 (discarding fetch)
       dispatch(
         showNotificationAction({
           status: "Success",
@@ -40,7 +52,10 @@ function App() {
           message: "Sent cart data successfully!",
         })
       );
+<<<<<<< HEAD
       // let responseData = await JSON.parse(response);
+=======
+>>>>>>> parent of 69bb7a4 (discarding fetch)
     };
     sendCartData().catch((error) => {
       dispatch(

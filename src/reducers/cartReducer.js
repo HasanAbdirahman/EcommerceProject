@@ -2,7 +2,6 @@ const initialState = {
   products: [],
   totalQuantity: 0,
 };
-
 // DONT PERFORM ASYNC/AWAIT/fetch OR SIDE EFFECT ON THE REDUCERS
 export const addProductReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -88,21 +87,3 @@ export const removeProduct = (state = initialState, action) => {
       return state;
   }
 };
-
-// export const fetchData = (state = initialState, action) => {
-//   switch (action.type) {
-//     case "FETCH_ALL_DATA":
-//       return {
-//         ...state,
-//       };
-//     case "SUCCESS_FETCHING":
-//       console.log(action.payload);
-//       return {
-//         ...state,
-//         products: action.payload.productArray,
-//         totalQuantity: action.payload.totalQuantity,
-//       };
-//     default:
-//       return state;
-//   }
-// };
