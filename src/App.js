@@ -10,10 +10,49 @@ function App() {
   const notification = useSelector(
     (state) => state.showNotification.notification
   );
-  // useEffect(() => {
-  //   dispatch(fetchAllData());
-  // }, [dispatch]);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (isInital) {
+      isInital = false;
+      return;
+    }
+    const sendCartData = async () => {
+      dispatch(
+        showNotificationAction({
+          status: "Pending",
+          title: "Sending...",
+          message: "Sending cart data..",
+        })
+      );
+      let response = await fetch(
+        "https://ecommerce-f0912-default-rtdb.firebaseio.com/cart.json",
+        {
+          method: "PUT",
+          body: JSON.stringify(cart),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Sending cart data failed");
+      }
+      dispatch(
+        showNotificationAction({
+          status: "Success",
+          title: "Success",
+          message: "Sent cart data successfully!",
+        })
+      );
+      // let responseData = await JSON.parse(response);
+    };
+    sendCartData().catch((error) => {
+      dispatch(
+        showNotificationAction({
+          status: "error",
+          title: "Error!!",
+          message: "Sending cart data failed!.",
+        })
+      );
+    });
+  }, [cart, dispatch]);
   return (
     <>
       {notification && (
