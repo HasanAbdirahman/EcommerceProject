@@ -1,5 +1,9 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { addProductReducer, removeProduct } from "../reducers/cartReducer";
+import {
+  addProductReducer,
+  fetchData,
+  removeProduct,
+} from "../reducers/cartReducer";
 import { toggleCartUi, showNotificationReducer } from "../reducers/uiReducer";
 
 const rootReducer = combineReducers({
@@ -7,6 +11,7 @@ const rootReducer = combineReducers({
   productRemoved: removeProduct,
   toggle: toggleCartUi,
   showNotification: showNotificationReducer,
+  // allproducts: fetchData,
 });
 
 const store = configureStore({
