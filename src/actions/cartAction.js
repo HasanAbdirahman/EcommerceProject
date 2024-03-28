@@ -14,7 +14,7 @@ export const addItemToCart = (newProduct) => {
       );
 
       let response = await fetch(
-        "https://ecommerce-f0912-default-rtdb.firebaseio.com/cart.json",
+        "https://http-react-8f94b-default-rtdb.firebaseio.com/cart.json",
         {
           method: "PUT",
           body: JSON.stringify(newProduct),

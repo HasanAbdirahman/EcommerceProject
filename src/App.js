@@ -10,7 +10,6 @@ function App() {
   const notification = useSelector(
     (state) => state.showNotification.notification
   );
-  const dispatch = useDispatch();
   useEffect(() => {
     if (isInital) {
       isInital = false;
