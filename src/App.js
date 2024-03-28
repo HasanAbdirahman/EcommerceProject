@@ -13,10 +13,7 @@ function App() {
   const notification = useSelector(
     (state) => state.showNotification.notification
   );
-<<<<<<< HEAD
-=======
   const dispatch = useDispatch();
->>>>>>> parent of 69bb7a4 (discarding fetch)
   useEffect(() => {
     if (isInital) {
       isInital = false;
@@ -40,11 +37,8 @@ function App() {
       if (!response.ok) {
         throw new Error("Sending cart data failed");
       }
-<<<<<<< HEAD
-=======
       let responseData = await response.json();
       console.log("hasan" + responseData);
->>>>>>> parent of 69bb7a4 (discarding fetch)
       dispatch(
         showNotificationAction({
           status: "Success",
@@ -52,10 +46,48 @@ function App() {
           message: "Sent cart data successfully!",
         })
       );
-<<<<<<< HEAD
+    };
+    sendCartData().catch((error) => {
+      dispatch(
+        showNotificationAction({
+          status: "error",
+          title: "Error!!",
+          message: "Sending cart data failed!.",
+        })
+      );
+    });
+  }, [cart, dispatch]);
+  useEffect(() => {
+    if (isInital) {
+      isInital = false;
+      return;
+    }
+    const sendCartData = async () => {
+      dispatch(
+        showNotificationAction({
+          status: "Pending",
+          title: "Sending...",
+          message: "Sending cart data..",
+        })
+      );
+      let response = await fetch(
+        "https://ecommerce-f0912-default-rtdb.firebaseio.com/cart.json",
+        {
+          method: "PUT",
+          body: JSON.stringify(cart),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Sending cart data failed");
+      }
+      dispatch(
+        showNotificationAction({
+          status: "Success",
+          title: "Success",
+          message: "Sent cart data successfully!",
+        })
+      );
       // let responseData = await JSON.parse(response);
-=======
->>>>>>> parent of 69bb7a4 (discarding fetch)
     };
     sendCartData().catch((error) => {
       dispatch(
